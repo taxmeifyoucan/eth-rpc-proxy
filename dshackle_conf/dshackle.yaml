@@ -1,0 +1,52 @@
+version: v1
+port: 2449
+tls:
+  enabled: false
+
+monitoring:
+  enabled: true
+  jvm: false
+  extended: false
+  prometheus:
+    enabled: true
+    bind: 0.0.0.0
+    port: 8081
+    path: /metrics
+
+cache:
+  redis:
+    enabled: true
+    host: redis
+    password: ""
+
+proxy:
+  host: 0.0.0.0
+  port: 8080
+  tls:
+    enabled: false
+  routes:
+    - id: mainnet
+      blockchain: ethereum
+    - id: optimism
+      blockchain: ethereum-classic
+    - id: arbitrum
+      blockchain: matic
+    - id: kovan
+      blockchain: kovan
+
+cluster:
+  defaults:
+    - chains:
+        - ethereum
+    - chains:
+        - kovan
+    - chains:
+        - optimism
+    - chains:
+        - arbitrum
+  include:
+    - "geth_archive.yaml"
+    - "eth_public.yaml"
+    - "kovan.yaml"
+    - "optimism.yaml"
+    - "arbitrum.yaml"

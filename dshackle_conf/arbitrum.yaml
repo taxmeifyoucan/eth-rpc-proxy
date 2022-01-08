@@ -1,0 +1,19 @@
+upstreams:
+  - id:  arbitrum
+#Few hacks because Dshackle doesnt support L2s yet
+    chain: matic
+    methods:
+        enabled:
+          - name: eth_chainId
+            static: "0xa4b1"  # static return value
+          - name: net_version
+            static: "42161" 
+    options:
+        disable-validation: true    
+    labels:
+      provider: OffchainLabs
+    connection:
+      ethereum:
+        rpc:
+          url: "https://arb1.arbitrum.io/rpc"
+

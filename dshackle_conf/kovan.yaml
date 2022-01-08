@@ -1,0 +1,11 @@
+upstreams:
+  - id:  kovan
+    chain: kovan
+    labels:
+      provider: geth
+      archive: false
+    connection:
+      ethereum:
+        rpc:
+          url: "https://kovan.infura.io/v3/"
+

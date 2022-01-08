@@ -1,0 +1,20 @@
+upstreams:
+  - id:  optimism
+#Hacks for enabling arbitrary network separted from mainnet
+    chain: ethereum-classic
+    methods:
+        enabled:
+          - name: eth_chainId
+            static: "0xa"  # static return value
+          - name: net_version
+            static: "10" 
+    options:
+        disable-validation: true
+    labels:
+      provider: l2geth
+      archive: false
+    connection:
+      ethereum:
+        rpc:
+          url: "https://mainnet.optimism.io"
+

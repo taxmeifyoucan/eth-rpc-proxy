@@ -4,7 +4,7 @@ upstreams:
     labels:
       provider: geth
       archive: true
-#Prague archive node, debug calls are sent here
+#Archive node instance, debug calls are sent here
     methods:
       enabled:
         - name: debug_traceBlock

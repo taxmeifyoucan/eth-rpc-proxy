@@ -9,6 +9,7 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx_conf/proxy.conf:/etc/nginx/proxy.conf
+      - ./nginx_conf/dshackle.example.com_location:/etc/nginx/vhost.d/dshackle.example.com_location
       - certs:/etc/nginx/certs
       - vhosts:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
@@ -36,10 +37,10 @@ services:
     expose:
       - "8080"
     environment:
-      - VIRTUAL_HOST=
+      - VIRTUAL_HOST=dshackle.example.com
       - VIRTUAL_PORT=8080
-      - "LETSENCRYPT_HOST="
-      - "LETSENCRYPT_EMAIL="
+      - LETSENCRYPT_HOST=dshackle.example.com
+      - LETSENCRYPT_EMAIL=dshackle.example.com
 #    extra_hosts:
 #      - "host.docker.internal:host-gateway"
     networks:

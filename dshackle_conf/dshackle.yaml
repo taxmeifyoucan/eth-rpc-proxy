@@ -45,6 +45,7 @@ cluster:
     - chains:
         - arbitrum
   include:
+    - "geth_main.yaml"
     - "geth_archive.yaml"
     - "eth_public.yaml"
     - "kovan.yaml"

@@ -1,7 +1,9 @@
+#Your main full node where requests are sent
+
 upstreams:
-  - id: archive
+  - id: main_fullnode
     chain: ethereum
-    role: standard
+    role: primary
     labels:
       provider: geth
       fullnode: true
@@ -69,7 +71,6 @@ upstreams:
     connection:
       ethereum:
         rpc:
-          url: "localhost"
-        ws:
-          url:
+          url: "host.docker.internal:8545"
+
 

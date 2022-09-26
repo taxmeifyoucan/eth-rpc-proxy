@@ -9,7 +9,7 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx_conf/proxy.conf:/etc/nginx/proxy.conf
-      - ./nginx_conf/dshackle.example.com_location:/etc/nginx/vhost.d/dshackle.example.com_location
+      - ./nginx_conf/${DOMAIN}_location:/etc/nginx/vhost.d/${DOMAIN}_location
       - certs:/etc/nginx/certs
       - vhosts:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
@@ -30,19 +30,19 @@ services:
 
   dshackle:
     container_name: dshackle
-    image: emeraldpay/dshackle:0.12
+    image: emeraldpay/dshackle:0.13
     restart: unless-stopped
     volumes:
       - ./dshackle_conf:/etc/dshackle
     expose:
       - "8080"
     environment:
-      - VIRTUAL_HOST=dshackle.example.com
+      - VIRTUAL_HOST=${DOMAIN}
       - VIRTUAL_PORT=8080
-      - LETSENCRYPT_HOST=dshackle.example.com
-      - LETSENCRYPT_EMAIL=dshackle.example.com
-#    extra_hosts:
-#      - "host.docker.internal:host-gateway"
+      - LETSENCRYPT_HOST=${DOMAIN}
+      - LETSENCRYPT_EMAIL=${EMAIL}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - proxy_net
       - back_net

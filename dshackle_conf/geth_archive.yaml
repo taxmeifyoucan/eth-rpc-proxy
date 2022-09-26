@@ -1,10 +1,12 @@
+#Example of archive node, debug calls are sent here
+
 upstreams:
-  - id: archive
+  - id: archive_node
     chain: ethereum
+    role: secondary
     labels:
       provider: geth
       archive: true
-#Archive node instance, debug calls are sent here
     methods:
       enabled:
         - name: debug_traceBlock

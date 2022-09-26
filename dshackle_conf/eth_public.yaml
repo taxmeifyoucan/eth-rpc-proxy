@@ -1,6 +1,7 @@
+#Public endpoint which serves as fallback 
 upstreams:
-  - id:  eth_fullnode
-#    role: fallback
+  - id:  public_endpoint
+    role: fallback
     chain: ethereum
     labels:
       provider: geth

@@ -9,10 +9,6 @@ upstreams:
       fullnode: true
     methods:
       enabled:
-        - name: debug_traceBlock
-        - name: debug_traceBlockByNumber
-        - name: debug_traceBlockByHash
-        - name: debug_traceTransaction
         - name: eth_accounts
         - name: eth_blockNumber
         - name: eth_call

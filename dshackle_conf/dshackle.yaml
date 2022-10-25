@@ -1,8 +1,12 @@
 version: v1
+# Settings for gRPC endpoint
+# Might offer better perfomence but doesn't have to be used
 port: 2449
 tls:
   enabled: false
 
+# Enabling metrics
+# Setup enviroment variables in /metrics directory for pushing data to your Prometheus instance
 monitoring:
   enabled: true
   jvm: false
@@ -13,12 +17,15 @@ monitoring:
     port: 8081
     path: /metrics
 
+# Enabling redis database for caching, it should be running in docker container 
 cache:
   redis:
     enabled: true
     host: redis
     password: ""
 
+# JSON-RPC ports served by Dshackle
+# Various networks as examples, delete them and leave just those you wish to use
 proxy:
   host: 0.0.0.0
   port: 8080
@@ -31,15 +38,17 @@ proxy:
       blockchain: ethereum-classic
     - id: arbitrum
       blockchain: matic
-    - id: kovan
-      blockchain: kovan
+    - id: goerli
+      blockchain: goerli
 
+# Connections to clients for various endpoints 
+# Leave only those you are going to use
 cluster:
   defaults:
     - chains:
         - ethereum
     - chains:
-        - kovan
+        - goerli
     - chains:
         - optimism
     - chains:
@@ -48,6 +57,6 @@ cluster:
     - "geth_main.yaml"
     - "geth_archive.yaml"
     - "eth_public.yaml"
-    - "kovan.yaml"
+    - "goerli.yaml"
     - "optimism.yaml"
     - "arbitrum.yaml"

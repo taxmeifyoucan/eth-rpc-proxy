@@ -1,6 +1,6 @@
 upstreams:
   - id:  arbitrum
-#Few hacks because Dshackle doesnt support L2s yet
+#Dshackle doesn't support L2s yet, you can use this hacks for enabling arbitrary network 
     chain: matic
     methods:
         enabled:

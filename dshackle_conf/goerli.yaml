@@ -1,12 +1,12 @@
 #Example of a connection to testnet node
 upstreams:
-  - id:  kovan
-    chain: kovan
+  - id:  goerli
+    chain: goerli
     labels:
       provider: geth
       archive: false
     connection:
       ethereum:
         rpc:
-          url: "https://kovan.infura.io/v3/"
+          url: "https://goerli.infura.io/v3/"
 
